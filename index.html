@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="/scss/style.css"/>
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <div class="game_board">
+    <header class="score">
+      <img src="/images/logo.svg" alt="logo" class="score__image">
+      <div class="score__square">
+        <h5 class="score__text">score</h5>
+        <span class="score__points">0</span>
+      </div>
+    </header>
+    <main class="picking">
+      <div class="controls">
+        <div class="controls__btn-circle paper" data-selection="paper">
+          <span class="controls__wrapper"><img src="/images/icon-paper.svg" alt="paper icon"></span>
+        </div>
+        <div class="controls__btn-circle scissors" data-selection="scissors">
+          <span class="controls__wrapper"><img src="/images/icon-scissors.svg" alt="scissors icon"></span>
+        </div>
+        <div class="controls__btn-circle rock" data-selection="rock">
+          <span class="controls__wrapper"><img src="/images/icon-rock.svg" alt="rock icon"></span>
+        </div>
+      </div>
+      <div class="selected">
+        <div class="buttons">
+        </div>
+        <div class="selected__result">
+          <h1 class="selected__result_info"></h1>
+          <button class="selected__result_btn">Play again</button>
+        </div>
+      </div>
+    </main>
+    <button class="rules">Rules</button>
+  </div>
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>

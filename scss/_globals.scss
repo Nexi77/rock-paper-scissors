@@ -1,0 +1,24 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background: $radialGradient;
+    min-height: 100vh;
+}
+
+.paper{
+    background: $paper;
+    grid-area: paper;
+}
+.rock{
+    background: $rock;
+    grid-area: rock;
+}
+.scissors{
+    background: $scissors;
+    grid-area: scissors;
+}
