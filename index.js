@@ -51,6 +51,7 @@ function makeSelection(selection){
     }
     else if(computerWon){
         whoWon.innerText = "The house win"
+        resetScore();
     }
     else{
         whoWon.innerText = "It's a draw"
@@ -62,20 +63,19 @@ function isWinner(selection, opponentSelection){
 }
 
 function addSelectionResult(selection, winner, player){
-    controlsDiv.style.transform = "translateX(150%)";
+    controlsDiv.classList.toggle('translate');
     controlsDiv.style.visibility = "hidden";  
     choicesDiv.style.visibility = "visible";
     template += 
     `
-    <div class="selected__choice ${winner ? 'winner' : 'loser'}">
-        <div class="controls__btn-circle ${selection.name} selected__circle">
+    <div class="selected__choice">
+        <div class="controls__btn-circle ${selection.name} selected__circle ${winner ? 'selected__winner' : 'selected__loser'}">
             <span class="controls__wrapper"><img src=${selection.img} alt="${selection.name} icon"></span>
         </div>
         <h4 class="selected__text">${player} picked</h4>
     </div>
     `
     if(player === 'the house'){
-        console.log(template)
         resultDiv.innerHTML = template;
     }
 }
@@ -83,7 +83,6 @@ function addSelectionResult(selection, winner, player){
 againButton.addEventListener('click', () => {
     template = ``;
     resultDiv.innerHTML = template;
-    controlsDiv.style.transform = "translateX(0)";
     controlsDiv.style.visibility = "visible";  
     choicesDiv.style.visibility = "hidden";
 })
@@ -91,3 +90,21 @@ againButton.addEventListener('click', () => {
 function incrementScore(score){
     score.innerText = parseInt(score.innerText) + 1;
 }
+
+function resetScore(){
+    score.innerText = 0;
+}
+
+const rulesButton = document.querySelector('.rules');
+const modal = document.querySelector('.rules-modal');
+const close = document.querySelector('.rules-modal__close');
+
+rulesButton.addEventListener('click', () => {
+    modal.classList.add('opened-rules');
+})
+
+close.addEventListener('click', () => {
+    console.log('ran')
+    modal.classList.remove('opened-rules');
+    modal.classList.add('rules-modal');
+})

@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
   background: radial-gradient(circle at top, #1f3756, #141539);
   min-height: 100vh;
 }
@@ -14,26 +14,89 @@ body {
 .paper {
   background: -webkit-gradient(linear, left top, left bottom, from(#4865f4), to(#5671f5));
   background: linear-gradient(to bottom, #4865f4, #5671f5);
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: paper;
 }
 
 .rock {
   background: -webkit-gradient(linear, left top, left bottom, from(#dc2e4e), to(#dc2e4e));
   background: linear-gradient(to bottom, #dc2e4e, #dc2e4e);
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: rock;
 }
 
 .scissors {
   background: -webkit-gradient(linear, left top, left bottom, from(#ec9e0e), to(#eca922));
   background: linear-gradient(to bottom, #ec9e0e, #eca922);
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: scissors;
+}
+
+.translate {
+  -webkit-transform: translateX(150%);
+          transform: translateX(150%);
+}
+
+.rules-modal {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+.rules-modal__text {
+  color: #3b4363;
+  margin-top: 50px;
+}
+@media (min-width: 40em) {
+  .rules-modal__text {
+    font-size: 3.5rem;
+  }
+}
+.rules-modal__img {
+  padding: 20px;
+  width: 300px;
+  margin-top: 40px;
+}
+@media (min-width: 40em) {
+  .rules-modal__img {
+    width: 600px;
+  }
+}
+.rules-modal__close {
+  margin-right: 20px;
+  margin-top: 8px;
+  color: #3b4363;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.opened-rules {
+  visibility: visible;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.rules_close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
 }
 
 .game_board {
@@ -41,10 +104,10 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
-
 .game_board .rules {
   background: transparent;
   text-transform: uppercase;
+  cursor: pointer;
   letter-spacing: 2px;
   position: absolute;
   bottom: 10px;
@@ -56,9 +119,16 @@ body {
   border: 2px solid white;
   border-radius: 10px;
 }
-
 .game_board .rules:focus {
   outline: none;
+}
+@media (min-width: 64em) {
+  .game_board .rules {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    left: 80%;
+    bottom: 20px;
+  }
 }
 
 .score {
@@ -77,13 +147,11 @@ body {
   margin: 0 auto 4rem auto;
   max-width: 20rem;
 }
-
 .score__image {
   padding: 1.25rem;
   padding-left: 0;
   height: 6rem;
 }
-
 .score__square {
   background: white;
   text-align: center;
@@ -92,13 +160,11 @@ body {
   height: 4rem;
   width: 4rem;
 }
-
 .score__text {
   color: #2a46c0;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-
 .score__points {
   font-size: 1.75rem;
   font-weight: 700;
@@ -110,6 +176,11 @@ body {
   margin: 0 auto;
   position: relative;
 }
+@media (min-width: 64em) {
+  .picking {
+    width: 20rem;
+  }
+}
 
 .controls .paper {
   margin-right: 20px;
@@ -117,18 +188,22 @@ body {
 
 .controls {
   margin: 0 auto;
-  display: -ms-grid;
   display: grid;
   width: 100%;
   justify-items: center;
   position: absolute;
-      grid-template-areas: "paper scissors" "rock rock";
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  grid-template-areas: "paper scissors" "rock rock";
+  grid-template-columns: 1fr 1fr;
   background: url("../images/bg-triangle.svg") center center no-repeat;
   background-size: 80%;
 }
-
+@media (min-width: 64em) {
+  .controls {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+    background-size: 55%;
+  }
+}
 .controls__btn-circle {
   border: none;
   display: -webkit-box;
@@ -147,7 +222,6 @@ body {
   -webkit-box-shadow: inset 0 -6px rgba(0, 0, 0, 0.15);
           box-shadow: inset 0 -6px rgba(0, 0, 0, 0.15);
 }
-
 .controls__wrapper {
   height: 80px;
   width: 80px;
@@ -165,7 +239,6 @@ body {
   -webkit-box-shadow: inset 0 6px rgba(0, 0, 0, 0.15);
           box-shadow: inset 0 6px rgba(0, 0, 0, 0.15);
 }
-
 .controls__wrapper img {
   height: 50%;
 }
@@ -181,7 +254,6 @@ body {
   width: 100%;
   visibility: hidden;
 }
-
 .selected .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -190,12 +262,24 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
+@media (min-width: 40em) {
+  .selected .buttons {
+    width: 300px;
+  }
+}
+@media (min-width: 64em) {
+  .selected .buttons {
+    width: 400px;
+    -ms-flex-item-align: center;
+        align-self: center;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+}
 .selected__circle {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
-
 .selected__choice {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -208,7 +292,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .selected__text {
   color: white;
   text-transform: uppercase;
@@ -216,7 +299,6 @@ body {
   text-align: center;
   margin-top: 15px;
 }
-
 .selected__result {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -233,7 +315,11 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
+@media (min-width: 64em) {
+  .selected__result {
+    margin-top: 70px;
+  }
+}
 .selected__result_info {
   color: white;
   text-transform: uppercase;
@@ -243,7 +329,6 @@ body {
   margin-bottom: 10px;
   text-align: center;
 }
-
 .selected__result_btn {
   border: none;
   background-color: white;
@@ -254,5 +339,4 @@ body {
   letter-spacing: 2px;
   color: #3b4363;
   font-weight: bold;
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
